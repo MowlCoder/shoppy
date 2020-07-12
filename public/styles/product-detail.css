@@ -1,23 +1,25 @@
 .product-detail {
-    width: 23rem;
+    width: 60%;
     max-width: 90%;
     margin: auto;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
 }
 
 .product-detail__header {
     width: 100%;
     text-align: center;
     padding: 30px 0;
+    border-bottom: 2px solid rgb(158, 224, 157);
 }
 
 .product-detail__img {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-detail__img img {
-    width: 100%;
+    width: 35%;
 }
 
 .product-detail__info {
