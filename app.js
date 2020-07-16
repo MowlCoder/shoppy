@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/shop');
 
+const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
+
 const errorController = require('./controllers/error');
 
 const app = express();
@@ -21,6 +25,15 @@ app.use(userRoutes);
 
 app.use(errorController.get404);
 
-app.listen(3000, () => {
-    console.log('Server is listening on port 3000...');
+Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
+
+sequelize
+.sync({ force: true })
+.then(result => {
+    app.listen(3000, () => {
+        console.log('Server is listening on port 3000...');
+    });
 })
+.catch(err => {
+    console.log(err);
+});
