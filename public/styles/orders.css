@@ -1,0 +1,19 @@
+.orders {
+    width: 30rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.orders > li {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid rgb(158, 224, 157);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 20px;
+}
+
+.orders-product li {
+    list-style-type: none;
+}

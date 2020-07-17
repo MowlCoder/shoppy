@@ -1,0 +1,41 @@
+.cart-list {
+    width: 30rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.cart-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    border: 1px solid rgb(158, 224, 157);
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.cart-list p {
+    margin-left: 30px;
+}
+
+.cart-list form {
+    margin-right: 30px;
+}
+
+.order-now {
+    width: 30rem;
+    margin: 0 auto;
+}
+
+.delete-btn {
+    border: 1px solid rgb(255, 105, 105);
+    color: rgb(255, 105, 105);
+    outline: 0;
+    padding: 0.4rem 1.2rem;
+}
+
+.delete-btn:hover {
+    color: #ffffff;
+    background-color: rgb(255, 105, 105);
+}
