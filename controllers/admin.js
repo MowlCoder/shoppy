@@ -13,14 +13,8 @@ exports.getEditProduct = (req, res) => {
     
     const { productId } = req.params;
     
-    req.user.getProducts({
-        where: {
-            id: productId
-        }
-    })
-    .then(products => {
-        const product = products[0];
-        
+    Product.findById(productId)
+    .then(product => {        
         if (!product) {
             return res.redirect('/');
         }
@@ -33,7 +27,7 @@ exports.getEditProduct = (req, res) => {
 };
 
 exports.getProducts = (req, res) => {
-    req.user.getProducts()
+    Product.fetchAll()
     .then(products => {
         res.render('admin/products', { prods: products, path: '/admin/products' });
     })
@@ -45,28 +39,23 @@ exports.getProducts = (req, res) => {
 exports.postAddProduct = (req, res) => {
     const { title, imageUrl, price, description } = req.body;
     
-    req.user.createProduct({ title, price, imageUrl, description })
+    const product = new Product(title, price, description, imageUrl, null, req.user._id);
+    
+    product.save()
     .then(result => {
         res.redirect('/admin/add-product');
     })
     .catch(err => {
         console.log(err);
-    });
+    })
 };
 
 exports.postEditProduct = (req, res) => {
     const { productId, title, price, imageUrl, description } = req.body;
     
-    Product.findByPk(productId)
-    .then(product => {
-        product.title = title;
-        product.price = price;
-        product.imageUrl = imageUrl;
-        product.description = description;
+    const product = new Product(title, price, description, imageUrl, productId, req.user._id);
         
-        return product.save();
-    })
-    .then(result => {
+    product.save().then(result => {
         res.redirect('/admin/products');
     })
     .catch(err => {
@@ -77,11 +66,7 @@ exports.postEditProduct = (req, res) => {
 exports.postDeleteProduct = (req, res) => {
     const { productId } = req.body;
     
-    Product.destroy({
-        where: {
-            id: productId
-        }
-    })
+    Product.deleteById(productId)
     .then(result => {
         res.redirect('/admin/products'); 
     })

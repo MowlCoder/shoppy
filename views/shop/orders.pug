@@ -10,9 +10,9 @@ block content
             ul.orders
                 each order in orders
                     li 
-                        h1 ##{order.id}
+                        h1 Order - ##{order._id}
                         ul.orders-product
-                            each product in order.products
-                                li #{product.title} (#{product.orderItem.quantity})
+                            each product in order.items
+                                li #{product.title} (#{product.quantity})
         else
             h1 You got no orders

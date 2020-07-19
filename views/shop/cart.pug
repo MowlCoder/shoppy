@@ -10,9 +10,9 @@ block content
             ul.cart-list
                 each product in prods
                     li
-                        p #{product.title} (#{product.cartItem.quantity})
+                        p #{product.title} (#{product.quantity})
                         form(action="/cart-delete-item", method="POST")
-                            input(type="hidden", value=product.id, name="productId")
+                            input(type="hidden", value=product._id, name="productId")
                             button(type="submit", class="btn delete-btn") Delete
             form.order-now(action="/create-order", method="POST")
                 button.btn(type="submit") Order Now
