@@ -12,7 +12,7 @@ block content
                     li 
                         h1 Order - ##{order._id}
                         ul.orders-product
-                            each product in order.items
-                                li #{product.title} (#{product.quantity})
+                            each p in order.products
+                                li #{p.productData.title} (#{p.quantity})
         else
             h1 You got no orders

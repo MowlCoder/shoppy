@@ -8,11 +8,11 @@ block content
     main
         if prods.length > 0
             ul.cart-list
-                each product in prods
+                each p in prods
                     li
-                        p #{product.title} (#{product.quantity})
+                        p #{p.product.title} (#{p.quantity})
                         form(action="/cart-delete-item", method="POST")
-                            input(type="hidden", value=product._id, name="productId")
+                            input(type="hidden", value=p.product._id, name="productId")
                             button(type="submit", class="btn delete-btn") Delete
             form.order-now(action="/create-order", method="POST")
                 button.btn(type="submit") Order Now
