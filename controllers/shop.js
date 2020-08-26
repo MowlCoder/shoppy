@@ -4,7 +4,7 @@ const Order = require('./../models/order');
 exports.getIndex = (req, res) => {
     Product.find()
     .then(products => {
-        res.render('shop/index', { prods: products, path: '/' });
+        res.render('shop/index', { prods: products, path: '/', isLogged: req.isLogged });
     })
     .catch(err => {
         console.log(err);
@@ -14,7 +14,7 @@ exports.getIndex = (req, res) => {
 exports.getProducts = (req, res) => {
     Product.find()
     .then(products => {
-        res.render('shop/product-list', { prods: products, path: '/products' });
+        res.render('shop/product-list', { prods: products, path: '/products', isLogged: req.isLogged });
     })
     .catch(err => {
         console.log(err);
@@ -26,7 +26,7 @@ exports.getProduct = (req, res) => {
     
     Product.findById(prodId)
     .then(product => {
-        res.render('shop/product-detail', { product, path: '/products' });
+        res.render('shop/product-detail', { product, path: '/products', isLogged: req.isLogged });
     })
     .catch(err => {
         console.log(err);
@@ -38,7 +38,7 @@ exports.getCart = (req, res) => {
     .execPopulate()
     .then(user => {
         const products = user.cart.items;    
-        res.render('shop/cart', { path: '/cart', prods: products });
+        res.render('shop/cart', { path: '/cart', prods: products, isLogged: req.isLogged });
     })
     .catch(err => {
         console.log(err);
@@ -71,7 +71,7 @@ exports.postDeleteCartItem = (req, res) => {
 exports.getOrders = (req, res) => {
     Order.find({ 'user.userId': req.user._id })
     .then(orders => {
-        res.render('shop/orders', { path: '/orders', orders });
+        res.render('shop/orders', { path: '/orders', orders, isLogged: req.isLogged });
     })
     .catch(err => {
         console.log(err);
