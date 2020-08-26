@@ -14,7 +14,8 @@ block content
             .product-detail__info
                 h2 $#{product.price}
                 p #{product.description}
-                form(action="/cart" method="POST")
-                    button.btn(type="submit") Add To Cart
-                    input(type="hidden" name="productId" value=product._id)
+                if isLogged
+                    form(action="/cart" method="POST")
+                        button.btn(type="submit") Add To Cart
+                        input(type="hidden" name="productId" value=product._id)
         

@@ -16,10 +16,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .product-detail__img img {
     width: 35%;
+    height: 500px;
+    object-fit: cover;
 }
 
 .product-detail__info {
