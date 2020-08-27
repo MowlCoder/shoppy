@@ -1,19 +1,65 @@
+const bcrypt = require('bcryptjs');
+
 const User = require("../models/user");
 
 exports.getLogin = (req, res) => {
-    res.render('auth/login', { path: '/login', isLogged: req.session.isLoggedIn });
+    res.render('auth/login', { path: '/login', isLogged: false });
 };
 
 exports.postLogin = (req, res) => {
-    User.findById('5f435622f6fae6050424f51a')
+    const { email, password } = req.body;
+    
+    
+    User.findOne({ email: email })
     .then(user => {
-        req.session.isLoggedIn = true;
-        req.session.user = user;
+        if (!user) return res.redirect('/login');
+        
+        return bcrypt.compare(password, user.password)
+            .then(isMatch => {
+                if (isMatch) {
+                    req.session.isLoggedIn = true;
+                    req.session.user = user;
+            
+                    return req.session.save((err) => {
+                        if (err) console.log(err);
+                        res.redirect('/');
+                    });
+                }
+                
+                res.redirect('/login');
+            })
+            .catch(err => {
+                console.log(err);
+                res.redirect('/login');
+            });
+    })
+    .catch(err => console.log(err));
+};
 
-        req.session.save((err) => {
-            if (err) console.log(err);
-            res.redirect('/');
-        });
+exports.getSignUp = (req, res) => {
+    res.render('auth/signup', { path: '/signup', isLogged: false });
+};
+
+exports.postSignUp = (req, res) => {
+    const { email, password, password2 } = req.body;
+    
+    User.findOne({ email: email })
+    .then(user => {
+        if (user) return res.redirect('/signup');
+        
+        return bcrypt.hash(password, 12)
+            .then(hashedPassword => {
+                const newUser = new User({ 
+                    email: email, 
+                    password: hashedPassword, 
+                    cart: { items: [] } }
+                );
+                
+                return newUser.save();
+            })
+            .then(() => {
+                res.redirect('/login');
+            });
     })
     .catch(err => console.log(err));
 };
