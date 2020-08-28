@@ -1,7 +1,7 @@
 const Product = require('./../models/product');
 
 exports.getAddProduct = (req, res) => {
-    res.render('admin/edit-product', { path: '/admin/add-product', isLogged: req.session.isLoggedIn });
+    res.render('admin/edit-product', { path: '/admin/add-product' });
 };
 
 exports.getEditProduct = (req, res) => {
@@ -19,7 +19,7 @@ exports.getEditProduct = (req, res) => {
             return res.redirect('/');
         }
         
-        res.render('admin/edit-product', { path: '/admin/edit-product', editing: editMode, product , isLogged: req.session.isLoggedIn });
+        res.render('admin/edit-product', { path: '/admin/edit-product', editing: editMode, product });
     })
     .catch(err => {
         console.log(err);
@@ -29,7 +29,7 @@ exports.getEditProduct = (req, res) => {
 exports.getProducts = (req, res) => {
     Product.find()
     .then(products => {
-        res.render('admin/products', { prods: products, path: '/admin/products', isLogged: req.session.isLoggedIn });
+        res.render('admin/products', { prods: products, path: '/admin/products' });
     })
     .catch(err => {
         console.log(err);

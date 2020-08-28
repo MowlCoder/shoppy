@@ -21,6 +21,7 @@ block content
                             a.btn(href="/products/" + product._id) Details
                             if isLogged
                                 form(action="/cart" method="POST")
+                                    input(type="hidden", name="_csrf", value=csrfToken)
                                     button.btn(type="submit") Add To Cart
                                     input(type="hidden" name="productId" value=product._id)
         else

@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 exports.getIndex = (req, res) => {
     Product.find()
     .then(products => {
-        res.render('shop/index', { prods: products, path: '/', isLogged: req.session.isLoggedIn });
+        res.render('shop/index', { 
+            prods: products,
+            path: '/'
+         });
     })
     .catch(err => {
         console.log(err);
@@ -15,7 +18,7 @@ exports.getIndex = (req, res) => {
 exports.getProducts = (req, res) => {
     Product.find()
     .then(products => {
-        res.render('shop/product-list', { prods: products, path: '/products', isLogged: req.session.isLoggedIn });
+        res.render('shop/product-list', { prods: products, path: '/products' });
     })
     .catch(err => {
         console.log(err);
@@ -29,7 +32,7 @@ exports.getProduct = (req, res, next) => {
 
     Product.findById(prodId)
     .then(product => {
-        res.render('shop/product-detail', { product, path: '/products', isLogged: req.session.isLoggedIn });
+        res.render('shop/product-detail', { product, path: '/products' });
     })
     .catch(err => {
         console.log(err);
@@ -41,7 +44,7 @@ exports.getCart = (req, res) => {
     .execPopulate()
     .then(user => {
         const products = user.cart.items;    
-        res.render('shop/cart', { path: '/cart', prods: products, isLogged: req.session.isLoggedIn });
+        res.render('shop/cart', { path: '/cart', prods: products });
     })
     .catch(err => {
         console.log(err);
@@ -74,7 +77,7 @@ exports.postDeleteCartItem = (req, res) => {
 exports.getOrders = (req, res) => {
     Order.find({ 'user.userId': req.user._id })
     .then(orders => {
-        res.render('shop/orders', { path: '/orders', orders, isLogged: req.session.isLoggedIn });
+        res.render('shop/orders', { path: '/orders', orders });
     })
     .catch(err => {
         console.log(err);
@@ -91,7 +94,7 @@ exports.postOrder = (req, res) => {
         
         const order = new Order({
             user: {
-                username: req.user.username,
+                email: req.user.email,
                 userId: req.user
             },
             products
