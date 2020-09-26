@@ -1,0 +1,31 @@
+.notifications {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 17rem;
+    padding: 1rem;
+}
+
+.notification-block {
+    width: 100%;
+    height: 4rem;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity .7s ease;
+}
+
+.notifications-timeline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e74c3c;
+    height: 3px;
+    margin-left: 0;
+    transition: margin-left 5s ease-out;
+}
