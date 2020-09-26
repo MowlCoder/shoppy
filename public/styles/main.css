@@ -60,24 +60,15 @@ main {
 }
 
 .card {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
-.card__header,
-.card__content {
-    padding: 1rem;
-}
-
-.card__header h1,
-.card__content h1,
-.card__content h2,
-.card__content p {
-    margin: 0;
+    width: 250px;
+    height: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px #00000012;
 }
 
 .card__image {
     width: 100%;
-    height: 400px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,34 +80,60 @@ main {
     object-fit: cover;
 }
 
-.card__actions {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card__header {
+    margin: 1rem 0 0.5rem 0;
 }
 
-.card__actions button,
-.card__actions a {
-    margin: 0 0.25rem;
+.card__header h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.card__content p {
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.card__content h2 {
+    font-size: 1.2rem;
+    color: #f39c12;
+}
+
+.card__actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.card__actions form {
+    width: 40%;
+}
+
+.card__actions form .btn {
+    width: 100%;
 }
 
 .btn {
-    border: 1px solid #f1c40f;
-    background: #fff;
-    border-radius: 3px;
-    color:#f1c40f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    padding: 1rem 0;
     cursor: pointer;
-    font-size: 16px;
-    padding: 0.8rem 1.3rem;
-    transition: .3s;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    background-color: #f1c40f;
+    border: 0;
+    outline: 0;
+    transition: background-color .3s, box-shadow .3s;
     text-decoration: none;
+    color: #000000;
 }
-  
-.btn:hover,
-.btn:active {
-    background-color: rgb(158, 224, 157);
-    color: #fff;
+
+.btn:hover {
+    background-color: #f39c12;
+    box-shadow: 0 0 20px #f39d1290;
 }
 
 .user-message {
