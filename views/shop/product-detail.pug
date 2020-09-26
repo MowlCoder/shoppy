@@ -6,14 +6,28 @@ block styles
 
 block content
     main
+        //- .product-detail
+        //-     header.product-detail__header
+        //-         h1 #{product.title}
+        //-     .product-detail__img
+        //-         img(src=product.imageUrl, alt=product.title)
+        //-     .product-detail__info
+        //-         h2 $#{product.price}
+        //-         p #{product.description}
+        //-         if isLogged
+        //-             form(action="/cart" method="POST")
+        //-                 input(type="hidden", name="_csrf", value=csrfToken)
+        //-                 button.btn(type="submit") Add To Cart
+        //-                 input(type="hidden" name="productId" value=product._id)
         .product-detail
-            header.product-detail__header
-                h1 #{product.title}
             .product-detail__img
                 img(src=product.imageUrl, alt=product.title)
-            .product-detail__info
+            .product-detail__content
+                h1 #{product.title}
                 h2 $#{product.price}
-                p #{product.description}
+                .product-detail__content-description
+                    h2 Description
+                    p #{product.description}
                 if isLogged
                     form(action="/cart" method="POST")
                         input(type="hidden", name="_csrf", value=csrfToken)
