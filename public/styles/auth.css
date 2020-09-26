@@ -1,5 +1,18 @@
 .login-form {
-    width: 20rem;
+    width: 26rem;
+    height: 32rem;
     max-width: 90%;
+    padding: 15px 30px;
     margin: auto;
+    margin-top: 3rem;
+    box-shadow: 0 0 10px #00000023;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.login-form h2 {
+    font-size: 2.5rem;
 }

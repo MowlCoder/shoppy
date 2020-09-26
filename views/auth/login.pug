@@ -8,14 +8,19 @@ block styles
 block content
     main
         form.login-form(action='/login', method="POST")
+            h2 Welcome
             if errorMessage
                 div(class="user-message user-message--error")
                     p #{errorMessage}
             input(type="hidden", name="_csrf", value=csrfToken)
             .form-control
-                label(for="email") Email
-                input(type="email", name="email", id="email")
+                input(type="email", name="email", id="email", placeholder="Email", autocomplete="off")
+                .form-control-input-line
             .form-control
-                label(for="password") Password
-                input(type="password", name="password", id="password")
-            button.btn(type="submit") Log In
+                input(type="password", name="password", id="password",  placeholder="Password", autocomplete="off")
+                .form-control-input-line
+            button.form-control-btn(type="submit") Log In
+            p.form-control-addition 
+                span Not registered?
+                span.create-account-anchor 
+                    a(href="/signup") Create an account

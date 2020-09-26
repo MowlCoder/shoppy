@@ -8,17 +8,22 @@ block styles
 block content
     main
         form.login-form(action='/signup', method="POST")
+            h2 Nice To Meet You
             if errorMessage
                 div(class="user-message user-message--error")
                     p #{errorMessage}
             input(type="hidden", name="_csrf", value=csrfToken)
             .form-control
-                label(for="email") Email
-                input(type="email", name="email", id="email")
+                input(type="email", name="email", id="email", placeholder="Email")
+                .form-control-input-line
             .form-control
-                label(for="password") Password
-                input(type="password", name="password", id="password")
+                input(type="password", name="password", id="password", placeholder="Password")
+                .form-control-input-line
             .form-control
-                label(for="password") Confirm Password
-                input(type="password", name="password2", id="password2")
-            button.btn(type="submit") Sign Up
+                input(type="password", name="password2", id="password2", placeholder="Confirm Password")
+                .form-control-input-line
+            button.form-control-btn(type="submit") Sign Up
+            p.form-control-addition 
+                span Already registered?
+                span.create-account-anchor 
+                    a(href="/login") Log in account

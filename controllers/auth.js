@@ -85,7 +85,8 @@ exports.postSignUp = (req, res) => {
             })
             .then(() => {
                 res.redirect('/login');
-            });
+            })
+            .catch(err => console.log(err));
     })
     .catch(err => console.log(err));
 };
