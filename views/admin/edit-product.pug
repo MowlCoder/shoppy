@@ -10,16 +10,16 @@ block content
             input(type="hidden", name="_csrf", value=csrfToken)
             .form-control
                 label(for="title") Title
-                input(type="text", name="title", id="title" value=editing ? product.title : '')
+                input(type="text", name="title", id="title" value=editing ? product.title : '', placeholder="Title")
             .form-control
                 label(for="imageUrl") Image URL
-                input(type="text", name="imageUrl", id="imageUrl" value=editing ? product.imageUrl : '')
+                input(type="text", name="imageUrl", id="imageUrl" value=editing ? product.imageUrl : '', placeholder="Image url")
             .form-control
                 label(for="price") Price
-                input(type="number", name="price", id="price" step="0.01" value=editing ? product.price : '')
+                input(type="number", name="price", id="price" step="0.01" value=editing ? product.price : '', placeholder="Price")
             .form-control
                 label(for="description") Description
-                textarea(name="description", id="description", rows="5") #{editing ? product.description : ''}
+                textarea(name="description", id="description", rows="5", placeholder="Description") #{editing ? product.description : ''}
             if editing
                 input(type="hidden", value=product._id, name="productId")
             button.btn(type="submit") #{ editing ? 'Edit' : 'Add Product' }
