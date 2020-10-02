@@ -64,6 +64,8 @@ exports.postCart = (req, res) => {
 
 exports.postDeleteCartItem = (req, res) => {
     const { productId } = req.body;
+
+    console.log(req.body);
     
     req.user.removeFromCart(productId)
     .then(result => {

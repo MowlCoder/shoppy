@@ -10,8 +10,11 @@ block content
             ul.cart-list
                 each p in prods
                     li
-                        p #{p.product.title} (#{p.quantity})
+                        p #{p.product.title} (
+                            span #{p.quantity}
+                            span )
                         form(action="/cart-delete-item", method="POST")
+                            input(type="hidden", name="_csrf", value=csrfToken)
                             input(type="hidden", value=p.product._id, name="productId")
                             button(type="submit", class="btn delete-btn") Delete
             form.order-now(action="/create-order", method="POST")
