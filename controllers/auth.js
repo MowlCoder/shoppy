@@ -1,6 +1,17 @@
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 
 const User = require("../models/user");
+
+const cfg = require('./../config');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: cfg.emailData.user,
+      pass: cfg.emailData.pass
+    }
+  });
 
 exports.getLogin = (req, res) => {
     let message = req.flash('error');
@@ -83,7 +94,18 @@ exports.postSignUp = (req, res) => {
                 
                 return newUser.save();
             })
-            .then(() => {
+            .then(user => {
+                const mailOptions = {
+                    from: cfg.emailData.user,
+                    to: user.email,
+                    subject: 'Thanks for using Shoppy!',
+                    text: 'We appreciate that you have choosed our marketplace!'
+                };
+                
+                transporter.sendMail(mailOptions, (err, info) => {                    
+                    if (err) console.log(err);
+                });
+                
                 res.redirect('/login');
             })
             .catch(err => console.log(err));
