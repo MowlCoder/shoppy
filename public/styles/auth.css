@@ -16,3 +16,8 @@
 .login-form h2 {
     font-size: 2.5rem;
 }
+
+.reset-form {
+    height: 20rem !important;
+    margin-top: 10rem !important;
+}

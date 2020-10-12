@@ -8,7 +8,6 @@
 
 .notification-block {
     width: 100%;
-    height: 4rem;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -17,6 +16,7 @@
     overflow: hidden;
     opacity: 1;
     transition: opacity .7s ease;
+    padding: 1rem;
 }
 
 .notifications-timeline {
@@ -24,8 +24,15 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #e74c3c;
     height: 3px;
     margin-left: 0;
     transition: margin-left 5s ease-out;
+}
+
+.notification-block--error .notifications-timeline {
+    background-color: #e74c3c;
+}
+
+.notification-block--success .notifications-timeline {
+    background-color: #38e873;
 }

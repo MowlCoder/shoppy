@@ -72,15 +72,15 @@ main {
 }
 
 .card {
-    width: 250px;
-    height: 400px;
+    width: 15.625rem;
+    height: 28rem;
     background-color: #ffffff;
     box-shadow: 0 0 10px #00000012;
 }
 
 .card__image {
     width: 100%;
-    height: 200px;
+    height: 15.625rem;
     display: flex;
     align-items: center;
     justify-content: center;

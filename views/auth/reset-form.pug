@@ -1,0 +1,17 @@
+extends ../layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/styles/main.css")
+    link(rel="stylesheet", href="/styles/forms.css")
+    link(rel="stylesheet", href="/styles/auth.css")
+
+block content
+        form(class="login-form reset-form", action='/updatePassword', method="POST")
+            h2 Think harder :)
+            input(type="hidden", name="_csrf", value=csrfToken)
+            input(type="hidden", name="userId", value=userId)
+            input(type="hidden", name="passwordToken", value=passwordToken)
+            .form-control
+                input(type="password", name="resetPassword", id="resetPassword",  placeholder="Password", autocomplete="off")
+                .form-control-input-line
+            button.form-control-btn(type="submit") Update password

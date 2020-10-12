@@ -4,15 +4,8 @@ block styles
     link(rel="stylesheet", href="/styles/main.css")
     link(rel="stylesheet", href="/styles/forms.css")
     link(rel="stylesheet", href="/styles/auth.css")
-    link(rel="stylesheet", href="/styles/notifications.css")
 
 block content
-    main
-        .notifications
-            if errorMessage
-                div(class="notification-block notification-block--error")
-                    p #{errorMessage}
-                    .notifications-timeline
         form.login-form(action='/signup', method="POST")
             h2 Nice To Meet You
             input(type="hidden", name="_csrf", value=csrfToken)
@@ -30,4 +23,3 @@ block content
                 span Already registered?
                 span.create-account-anchor 
                     a(href="/login") Log in account
-    script(src="/js/notifications.js")

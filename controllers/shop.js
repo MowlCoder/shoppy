@@ -3,11 +3,16 @@ const Order = require('./../models/order');
 const mongoose = require('mongoose');
 
 exports.getIndex = (req, res) => {
+    const errorMessage = req.flash('error');
+    const successMessage = req.flash('success');
+    
     Product.find()
     .then(products => {
         res.render('shop/index', { 
             prods: products,
-            path: '/'
+            path: '/',
+            errorMessage: errorMessage.length > 0 ? errorMessage[0] : null,
+            successMessage: successMessage.length > 0 ? successMessage[0] : null
          });
     })
     .catch(err => {
